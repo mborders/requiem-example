@@ -1,0 +1,6 @@
+{
+  "name": "Requiem Example",
+  "description": "A Requiem example app",
+  "repository": "https://github.com/mborders/requiem-example",
+  "keywords": ["golang", "requiem", "rest", "api"]
+}
