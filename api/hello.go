@@ -1,6 +1,8 @@
 package api
 
 import (
+	"fmt"
+
 	"github.com/borderstech/requiem"
 )
 
@@ -14,12 +16,12 @@ type HelloMessage struct {
 }
 
 func (c HelloController) hello(ctx requiem.HTTPContext) {
-	m := &HelloMessage{Message: "Hello, world!"}
+	m := &HelloMessage{Message: fmt.Sprintf("Hello, %s!", ctx.GetParam("name"))}
 	ctx.SendJSON(m)
 }
 
 // Load attaches the HelloController to the given router
 func (c HelloController) Load(router *requiem.Router) {
-	r := router.NewAPIRouter("/hello")
+	r := router.NewAPIRouter("/hello/{name}")
 	r.Get("", c.hello)
 }
